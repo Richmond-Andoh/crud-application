@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://bootswatch.com/5/quartz/bootstrap.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,700;1,100;1,200;1,400&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,900;1,100;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="customize.css">
+    <title>CRUD APP</title>
+</head>
+<body>
+    <h1 class="text-center mt-3">CRUD APPLICATION</h1>
+
+    <div class="row">
+        <div class="col col-12 col-sm-12 col-md-4 col-lg-4">
+            <div class="container mt-3 ms-2">
+                <form action="#" class="form my-3 p-2" id="form" method="post">
+                    <div class="container mt-2">
+                        <label for="name" class="py-1">Username</label>
+                        <input type="text" name="name" id="name" class="form-control py-1 px-1">
+                    </div>
+                    <div class="container mt-2">
+                        <label for="email" class="py-1">Email</label>
+                        <input type="email" name="email" id="email" class="form-control py-1 px-1">
+                    </div>
+                    <div class="container mt-2">
+                        <label for="gender" class="py-1">Gender</label>
+                        <input type="text" id="gender" class="form-control py-1 px-1">
+                    </div>
+                    <div class="container mt-2">
+                        <label for="occupation" class="py-1">Occupation</label>
+                        <input type="text" id="occupation" class="form-control py-1 px-1">
+                    </div>
+                    <div class="container my-2 me-auto">
+                        <input type="submit" value="Add User" class="btn btn-end btn-sm btn-success py-1 px-2">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col col-12 col-sm-12 col-md-8 col-lg-8">
+          <div class="container mt-3">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover table-striped" id="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Gender</th>
+                            <th>Occupation</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody">
+                        
+                    </tbody>
+                </table>
+            </div>
+          </div>
+        </div>
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
