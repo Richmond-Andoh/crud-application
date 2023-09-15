@@ -15,22 +15,22 @@
     <div class="row">
         <div class="col col-12 col-sm-12 col-md-4 col-lg-4">
             <div class="container mt-3 ms-2">
-                <form action="#" class="form my-3 p-2" id="form" method="post">
+                <form action="#" class="form my-3 p-2" id="crud-form" method="post">
                     <div class="container mt-2">
                         <label for="name" class="py-1">Username</label>
-                        <input type="text" name="name" id="name" class="form-control py-1 px-1">
+                        <input type="text" name="name" id="name" required class="form-control py-1 px-1">
                     </div>
                     <div class="container mt-2">
                         <label for="email" class="py-1">Email</label>
-                        <input type="email" name="email" id="email" class="form-control py-1 px-1">
+                        <input type="email" name="email" required id="email" class="form-control py-1 px-1">
                     </div>
                     <div class="container mt-2">
                         <label for="gender" class="py-1">Gender</label>
-                        <input type="text" id="gender" class="form-control py-1 px-1">
+                        <input type="text" id="gender" required class="form-control py-1 px-1">
                     </div>
                     <div class="container mt-2">
                         <label for="occupation" class="py-1">Occupation</label>
-                        <input type="text" id="occupation" class="form-control py-1 px-1">
+                        <input type="text" id="occupation" required class="form-control py-1 px-1">
                     </div>
                     <div class="container my-2 me-auto">
                         <input type="submit" value="Add User" class="btn btn-end btn-sm btn-success py-1 px-2">
@@ -44,14 +44,14 @@
                 <table class="table table-bordered table-hover table-striped" id="table">
                     <thead>
                         <tr>
-                            <th>ID</th>
+                            <!-- <th>ID</th> -->
                             <th>Name</th>
                             <th>Email</th>
                             <th>Gender</th>
                             <th>Occupation</th>
                         </tr>
                     </thead>
-                    <tbody id="tbody">
+                    <tbody id="user-list">
                         
                     </tbody>
                 </table>

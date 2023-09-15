@@ -1,58 +1,83 @@
 
-//get the form element
-let form = document.getElementById("form");
-let table = document.getElementById("table");
-let tbody = document.getElementById("tbody");
-let userArr = JSON.parse(localStorage.getItem("users")) || []
+//Get references to HTML elements
+const form = document.getElementById("crud-form");
+const nameInput = document.getElementById("name");
+const emailInput = document.getElementById("email");
+const genderInput = document.getElementsByName("gender");
+const occupationInput = document.getElementById("occupation");
+const userList = document.getElementById("user-list");
 
+//Initialize an array to store user data
+let users = localStorage.getItem("users") || [];
 
-// listen to the submit event on the form
-form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const userData = {
-        id: "00" + (userArr.length + 1),
-        name: form.name.value,
-        email: form.email.value,
-        gender: form.gender.value,
-        occupation: form.occupation.value
-    }
-    addUsers(userData);
+//Function to render the user list
+function renderUsers() {
+    userList.innerHTML = "";
+    users.forEach((user, index) => {
+        const listItem = document.createElement("tr");
+        listItem.innerHTML = `
+            <td> ${user.name}</td>
+            <td> ${user.email}</td>
+            <td>${user.gender}</td>
+            <td> ${user.occupation}</td>
+            <div class="d-flex">
+                <button class="btn btn-warning btn-sm mx-1" onclick="deleteUser(${index})">Delete</button>
+                <button class="btn btn-danger mx-1 btn-sm" onclick="editUser(${index})">Edit</button>
+            </div>
+        `;
+        userList.appendChild(listItem);
+    });
+}
+
+// Function to add a new user
+function addUser(event) {
+    event.preventDefault();
+    // const gender = Array.from(genderInputs).find(input => input.checked);
+    // if (!gender) {
+    //     alert("Please select a gender.");
+    //     return;
+    //}
+    const newUser = {
+        name: nameInput.value,
+        email: emailInput.value,
+        gender: gender.value,
+        occupation: occupationInput.value,
+    };
+    users.push(newUser);
+    localStorage.setItem("users", JSON.stringify(users)); // Save to local storage
+    renderUsers();
     form.reset();
-    userArr.push(userData)
-    localStorage.setItem("users", JSON.stringify(userArr))
-});
-
-
-// declare the addUsers Function 
-
-let addUsers = (userData)  => {
- let tr  = document.createElement("tr");
- tr.innerHTML = ` 
-                <td>${userData.id}</td>
-                <td>${userData.name}</td>
-                <td>${userData.email}</td>
-                <td>${userData.gender}</td>
-                <td>${userData.occupation}</td>
-                <td class="d-flex">
-                    <button id="${userData.id}" data-identity="${userData.id}" onClick="deleteUser(${userData.id})" class="btn btn-danger me-1 btn-sm" id="delete">Delete</button>
-                    <button class="btn btn-warning btn-sm" id="edit">Edit</button>
-
-                </td>
-            `
-tbody.appendChild(tr)
-table.appendChild(tbody)
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-    userArr.forEach(user => {
-        addUsers(user);
-    })
-})
-
-// declare deleteUser function
-
-let deleteUser = (element) => {
-    alert("button click");
-    let userId = element[0].id;
-
+//Function to edit a user
+function editUser(index) {
+    const editedUser = users[index];
+    nameInput.value = editedUser.name;
+    emailInput.value = editedUser.email;
+    // genderInputs.forEach(input => {
+    //     if (input.value === editedUser.gender) {
+    //         input.checked = true;
+    //     }
+    // });
+    occupationInput.value = editedUser.occupation;
+    users.splice(index, 1); // Remove the original user
+    localStorage.setItem("users", JSON.stringify(users)); // Update local storage
+    renderUsers();
 }
+
+// Function to delete a user
+function deleteUser(index) {
+    users.splice(index, 1);
+    localStorage.setItem("users", JSON.stringify(users)); // Update local storage
+    renderUsers();
+}
+
+// Load users from local storage on page load
+const storedUsers = localStorage.getItem("users");
+if (storedUsers) {
+    users = JSON.parse(storedUsers);
+    renderUsers();
+}
+
+// Event listener for form submission
+form.addEventListener("submit", addUser);
