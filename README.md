@@ -6,6 +6,8 @@ This is a javascript crud application that renders user information to the UI. T
 The CRUD Application is a simple web application built in JavaScript that allows users to Create, Read, Update, and Delete user data. It provides a user-friendly interface for managing a list of users, and it utilizes local storage to persist user data across page reloads.
 </p>
 
+<img src="image/Capture1.JPG">
+
 ## Features
 
 ### Create User:
