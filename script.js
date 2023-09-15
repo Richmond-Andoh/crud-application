@@ -30,7 +30,7 @@ function renderUsers() {
 }
 
 // Function to add a new user
-function addUser(event) {
+let addUser = (event) => {
     event.preventDefault();
     // const gender = Array.from(genderInputs).find(input => input.checked);
     // if (!gender) {
@@ -50,7 +50,7 @@ function addUser(event) {
 }
 
 //Function to edit a user
-function editUser(index) {
+let editUser = (index) => {
     const editedUser = users[index];
     nameInput.value = editedUser.name;
     emailInput.value = editedUser.email;
@@ -66,7 +66,7 @@ function editUser(index) {
 }
 
 // Function to delete a user
-function deleteUser(index) {
+let deleteUser = (index) => {
     users.splice(index, 1);
     localStorage.setItem("users", JSON.stringify(users)); // Update local storage
     renderUsers();
